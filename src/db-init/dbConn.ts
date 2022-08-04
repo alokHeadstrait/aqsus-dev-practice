@@ -5,14 +5,14 @@ const mongoUrl: string = config.get("AQSUS_MONGO_URL");
 
 export let database: mongoose.Connection;
 
-export const createConnection = async () => {
+export const createConnection = () => {
   const uri = "mongodb://localhost:27017/aqsus";
 
   if (database) {
     return;
   }
 
-  await mongoose.connect(uri);
+  mongoose.connect(uri);
   database = mongoose.connection;
   database.once("open", async () => {
     logger.info("Connected to database");
@@ -24,10 +24,10 @@ export const createConnection = async () => {
   });
 };
 
-export const disconnect = async () => {
+export const disconnect = () => {
   if (!database) {
     return;
   }
 
-  await mongoose.disconnect();
+  mongoose.disconnect();
 };

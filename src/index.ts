@@ -38,10 +38,10 @@ app.use(
 );
 
 // check if port exists in the environment
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 // if the environment is test, do not start the server
-if (process.env.NODE_ENV != "test") {
+if (process.env.NODE_ENV !== "test") {
   createConnection();
   app
     .listen(parseInt(port.toString()), "0.0.0.0", () => {

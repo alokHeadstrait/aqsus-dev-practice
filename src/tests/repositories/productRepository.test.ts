@@ -82,7 +82,7 @@ describe("Testing products repository", () => {
 
   beforeAll(async () => {
     // create the connection
-    await createConnection();
+    createConnection();
 
     // add test products for testing purpose
     const addedProduct = await Products.insertMany(testProductData);
@@ -98,7 +98,7 @@ describe("Testing products repository", () => {
     await Products.deleteMany({ _id: testProductIds });
 
     logger.info("deleted all test products");
-    await disconnect();
+    disconnect();
   });
 
   it("should return all products available which are published and are public and results shorted in descending order on there creation date", async () => {
